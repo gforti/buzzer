@@ -15,6 +15,7 @@ const title = 'Buffer Buzzer'
 let data = {
   users: new Set(),
   buzzes: new Set(),
+  first: ''
 }
 
 const getData = () => Object.keys(data).reduce((d, key) => {
@@ -32,10 +33,17 @@ io.on('connection', (socket) => {
   socket.on('join', (user) => {
     data.users.add(user.id)
     io.emit('active', [...data.users].length)
+    if(data.first){
+        socket.emit('first', data.first);
+    }
     console.log(`${user.name} joined!`)
   })
 
   socket.on('buzz', (user) => {
+    if (!data.first) {
+        data.first = user.id
+        socket.emit('first', user.id);
+    }
     data.buzzes.add(`${user.name}-${user.team}`)
     io.emit('buzzes', [...data.buzzes])
     console.log(`${user.name} buzzed in!`)
@@ -43,7 +51,9 @@ io.on('connection', (socket) => {
 
   socket.on('clear', () => {
     data.buzzes = new Set()
+    data.first = ''
     io.emit('buzzes', [...data.buzzes])
+    io.emit('clear', null)
     console.log(`Clear buzzes`)
   })
 })

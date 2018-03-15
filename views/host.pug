@@ -7,9 +7,8 @@ html
   body
     header
       img.logo(src='/buzzer.png')
-      
-    div.container
-      h1=gameUrl
+    h1.url=gameUrl  
+    div.container      
       h2.js-active=`${users.length} joined`
       ol.js-buzzes
         each buzz in buzzes

@@ -40,6 +40,18 @@ buzzer.addEventListener('click', (e) => {
 editInfo.addEventListener('click', () => {
   joined.classList.add('hidden')
   form.classList.remove('hidden')
+  buzzer.classList.remove('first')
+})
+
+socket.on('first', (userID) => {
+    console.log(userID)
+  if ( userID === user.id) {
+      buzzer.classList.add('first')
+  }
+})
+
+socket.on('clear', () => {
+    buzzer.classList.remove('first')
 })
 
 getUserInfo()
