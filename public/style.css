@@ -68,8 +68,8 @@ input[type="number"] {
 }
 
 button {
-  background-color: #2fd566;
-  box-shadow: 0 3px 0 0 #29ad55;
+  background-color: green;
+  box-shadow: 0 3px 0 0 darkgreen;
   color: #fff;
   cursor: pointer;
 }
@@ -95,7 +95,7 @@ button:focus {
   height: 10em;
   font-size: 2em;
   border-radius: 50%;
-  background: linear-gradient(to bottom, #b01e1e 0%,red 100%);  
+  background: linear-gradient(to bottom, #b01e1e 0%, red 100%);  
   text-shadow: 0 5px 2px rgba(122,17,8,.8);
   box-shadow: 0 18px 0 rgb(183,9,0);
   font-weight: 900;
@@ -136,10 +136,51 @@ textarea:required:valid
 }
 
 .first {
-    background: linear-gradient(to bottom, green 0%,greenyellow 100%);
+    background: linear-gradient(to bottom, green 0%, greenyellow 100%);
     box-shadow: 0 18px 0 green;
 }
 
 .url {
     font-size: 5.5vw;
+    padding: 0;
+    margin: 0;
+}
+
+.start,
+.pause {
+    width: 30%;
+    display: inline;
+    margin-right: 0.5rem;
+}
+
+.timer {
+    text-align: center;
+    font-size: 6em;
+    margin: 0.5rem;
+    padding: 2rem 0;
+    text-shadow: 5px 5px 5px black;
+    border: 6px solid limegreen;    
+    outline: none;
+}
+
+.is-paused {
+    background-color: red;
+    border-color: red;
+}
+
+.correct, .wrong {
+    width: 40%;
+    display: inline;
+    margin-right: 0.5rem;
+}
+
+.correct {
+    background-color: blue;
+}
+.wrong {
+    background-color: red;
+}
+
+.warning {
+   background-color: firebrick;
 }

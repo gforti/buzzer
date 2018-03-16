@@ -7,14 +7,22 @@ html
   body
     header
       img.logo(src='/buzzer.png')
-    h1.url=gameUrl  
+    h1.url=gameUrl
+    div.container
+        h1.timer 0
+        button.start.sec30='Start 30'
+        button.start.sec60='Start 60'
+        button.pause='Pause'
+    div.container
+        button.correct='Correct'
+        button.wrong='Wrong'
     div.container      
       h2.js-active=`${users.length} joined`
       ol.js-buzzes
         each buzz in buzzes
           li=`${buzz.name} on Team ${buzz.team}`
       button.js-clear='Clear buzzes'
-
+           
     script(src='/socket.io/socket.io.js')
     script(src='/host.js')
 
